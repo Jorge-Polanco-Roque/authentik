@@ -29550,19 +29550,10 @@ paths:
       - $ref: '#/components/parameters/QueryPaginationPage'
       - $ref: '#/components/parameters/QueryPaginationPageSize'
       - in: query
-        name: password
-        schema:
-          type: string
-      - in: query
         name: port
         schema:
           type: integer
       - $ref: '#/components/parameters/QuerySearch'
-      - in: query
-        name: stage_uuid
-        schema:
-          type: string
-          format: uuid
       - in: query
         name: subject
         schema:
@@ -37146,6 +37137,11 @@ components:
           minimum: -2147483648
         username:
           type: string
+        secret:
+          type: string
+          format: uuid
+          nullable: true
+          title: SMTP password
         use_tls:
           type: boolean
         use_ssl:
@@ -37201,9 +37197,11 @@ components:
           minimum: -2147483648
         username:
           type: string
-        password:
+        secret:
           type: string
-          writeOnly: true
+          format: uuid
+          nullable: true
+          title: SMTP password
         use_tls:
           type: boolean
         use_ssl:
@@ -38508,6 +38506,11 @@ components:
         public_key:
           type: string
           description: Public key, acquired your captcha Provider.
+        secret:
+          type: string
+          format: uuid
+          title: Private key
+          description: Private key, acquired your captcha Provider.
         js_url:
           type: string
         api_url:
@@ -38535,6 +38538,7 @@ components:
       - name
       - pk
       - public_key
+      - secret
       - verbose_name
       - verbose_name_plural
     CaptchaStageRequest:
@@ -38548,10 +38552,10 @@ components:
           type: string
           minLength: 1
           description: Public key, acquired your captcha Provider.
-        private_key:
+        secret:
           type: string
-          writeOnly: true
-          minLength: 1
+          format: uuid
+          title: Private key
           description: Private key, acquired your captcha Provider.
         js_url:
           type: string
@@ -38577,8 +38581,8 @@ components:
             in the context for policy decisions
       required:
       - name
-      - private_key
       - public_key
+      - secret
     CertAttributeEnum:
       enum:
       - subject
@@ -40581,6 +40585,11 @@ components:
           minimum: -2147483648
         username:
           type: string
+        secret:
+          type: string
+          format: uuid
+          nullable: true
+          title: SMTP password
         use_tls:
           type: boolean
         use_ssl:
@@ -40640,9 +40649,11 @@ components:
           minimum: -2147483648
         username:
           type: string
-        password:
+        secret:
           type: string
-          writeOnly: true
+          format: uuid
+          nullable: true
+          title: SMTP password
         use_tls:
           type: boolean
         use_ssl:
@@ -50865,9 +50876,11 @@ components:
           minimum: -2147483648
         username:
           type: string
-        password:
+        secret:
           type: string
-          writeOnly: true
+          format: uuid
+          nullable: true
+          title: SMTP password
         use_tls:
           type: boolean
         use_ssl:
@@ -51197,10 +51210,10 @@ components:
           type: string
           minLength: 1
           description: Public key, acquired your captcha Provider.
-        private_key:
+        secret:
           type: string
-          writeOnly: true
-          minLength: 1
+          format: uuid
+          title: Private key
           description: Private key, acquired your captcha Provider.
         js_url:
           type: string
@@ -51433,9 +51446,11 @@ components:
           minimum: -2147483648
         username:
           type: string
-        password:
+        secret:
           type: string
-          writeOnly: true
+          format: uuid
+          nullable: true
+          title: SMTP password
         use_tls:
           type: boolean
         use_ssl:
